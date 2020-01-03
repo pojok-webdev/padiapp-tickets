@@ -10,12 +10,12 @@ var padi = {
     getDiffer : function(date1,date2){
         var Difference_In_Time = date2.getTime() - date1.getTime(); 
         var Difference_In_Seconds = Difference_In_Time / 1000;
-        var Difference_In_Minutes = Math.round(Difference_In_Seconds / 60);
-        var Difference_In_Hours = Math.round(Difference_In_Minutes / 60);
-        var Difference_In_Days = Math.round(Difference_In_Hours / 24);
-        var hours_left = Difference_In_Hours % 24;
-        var minutes_left = Math.round(Difference_In_Minutes % 60);
-        var seconds_left = Math.round(Difference_In_Seconds % 60);
+        var Difference_In_Minutes = Math.floor(Difference_In_Seconds / 60);
+        var Difference_In_Hours = Math.floor(Difference_In_Minutes / 60);
+        var Difference_In_Days = Math.floor(Difference_In_Hours / 24);
+        var hours_left = Math.floor(Difference_In_Days % 24);
+        var minutes_left = Math.floor(Difference_In_Minutes % 60);
+        var seconds_left = Math.floor(Difference_In_Seconds % 60);
             return {
                 days:Difference_In_Days,
                 hours:Difference_In_Hours,
@@ -36,7 +36,6 @@ $.fn.showDate = function(options){
         let cdatesplitted = cdate.split(' ');
         let mdYsplitted = cdatesplitted[0].split("-");
         let mdY = mdYsplitted[1]+'/'+mdYsplitted[2]+'/'+mdYsplitted[0]+' '+cdatesplitted[1];
-        console.log('mdY',mdY);
         let x = padi.getDiffer(new Date(mdY),new Date());
         let out = x.days+' hari,'+x.hours_left+' jam,'+x.minutes_left+' menit,'+x.seconds_left+' detik';
         $(this).html(out);

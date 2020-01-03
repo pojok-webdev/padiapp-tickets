@@ -5,6 +5,23 @@ Class Tickets extends CI_Controller{
         parent::__construct();
         $this->load->model('crud');
     }
+    function add(){
+        $tickets = $this->crud->gets('tickets',$this->cols,1,10);
+        $data = array(
+            'objs'=> $tickets,
+            'objsjson'=> json_encode($tickets),
+            'pagetitle'=>'Padi InterNET Add Tickets',
+            'username'=>'Guest',
+            'tabletitle'=>'Tickets',
+            'tablesubtitle'=>'Add',
+            'nav'=>array(
+                '0'=>array('url'=>'/','val'=>'App'),
+                '1'=>array('url'=>'/','val'=>'Tickets'),
+                '2'=>array('url'=>'/','val'=>'Add')
+            )
+        );
+        $this->load->view('tickets/add',$data);
+    }
     function index(){
         $tickets = $this->crud->gets('tickets',$this->cols,1,10);
         $data = array(

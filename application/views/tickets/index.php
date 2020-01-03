@@ -27,6 +27,7 @@
 								<h3 class="panel-title"><?php echo $tabletitle;?>
 									<span class="pull-right">
 										<?php echo $tablesubtitle;?>
+										<button  class="panel-settings"><i class="icon-plus"></i></button>
 									</span>
 								</h3>
 							</div>
@@ -91,17 +92,9 @@
 	<script src="/assets/padinet/dates.js"></script>
 	<script type="text/javascript">
 		(function($){
-			var date1 = new Date("06/30/2019 00:00:00"); 
-			var date2 = new Date("07/30/2019 01:02:05"); 
-			var differ = padi.getDiffer(date1,date2);
-			console.log("date1",date1);
-			console.log("date2",date2);
-			console.log("Differ day",differ.days,"Hari");
-			console.log("Hour left",differ.hours_left,"Jam");
-			console.log("minute left",differ.minutes_left,"Menit");
-			console.log("second left",differ.seconds_left);
-			console.log("TODATW",padi.toDate());
-			$(".age").showDate({startTime:'2019-12-31 22:30:00'});
+			setInterval(function(){
+				$(".age").showDate({startTime:'2019-12-31 22:30:00'});				
+			}, 1000);
 		}(jQuery))
 	</script>
 </body>
