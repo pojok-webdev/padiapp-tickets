@@ -18,4 +18,11 @@ Class Common {
         }
         return implode(',',$arraypair);
     }
+    function makeArray($objs,$cols = array('id','name')){
+        $arr = array();
+        foreach($objs as $obj){
+            $arr[$obj->$cols[0]] = $obj->$cols[1];
+        }
+        return $arr;
+    }
 }

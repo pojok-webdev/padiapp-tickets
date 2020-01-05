@@ -4,9 +4,12 @@ Class Tickets extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('crud');
+        $this->load->model('ticket');
     }
     function add(){
         $tickets = $this->crud->gets('tickets',$this->cols,1,10);
+        $complaints = $this->ticket->getComplaints();
+        $complaintsarray = $this->common->makearray($complaints['res']);
         $data = array(
             'objs'=> $tickets,
             'objsjson'=> json_encode($tickets),
@@ -14,6 +17,7 @@ Class Tickets extends CI_Controller{
             'username'=>'Guest',
             'tabletitle'=>'Tickets',
             'tablesubtitle'=>'Add',
+            'complaints'=>$complaintsarray,
             'nav'=>array(
                 '0'=>array('url'=>'/','val'=>'App'),
                 '1'=>array('url'=>'/','val'=>'Tickets'),
@@ -21,6 +25,14 @@ Class Tickets extends CI_Controller{
             )
         );
         $this->load->view('tickets/add',$data);
+    }
+    function getclients(){
+        $clients = $this->ticket->getClients();
+        echo json_encode($clients['res']);
+    }
+    function getcomplaints(){
+        $objs = $this->ticket->getcomplaints();
+        echo json_encode($objs);
     }
     function index(){
         $tickets = $this->crud->gets('tickets',$this->cols,1,10);
