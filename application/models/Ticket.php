@@ -38,4 +38,25 @@ Class Ticket extends CI_Model{
             'res'=>$res
         );
     }
+    function save($obj){
+        $x = $this->decomposeObj($obj);
+        $sql = 'insert into tickets ';
+        $sql.= '('.$x["keys"].') ';
+        $sql.= 'values ';
+        $sql.= '('.$x["vals"].')';
+        $ci = & get_instance();
+        $ci->db->query($sql);
+    }
+    function decomposeObj($obj){
+        $keys = array();
+        $vals = array();
+        foreach($obj as $key=>$val){
+            array_push($keys,$key);
+            array_push($vals,$val);
+        }
+        return array(
+            'keys'=>'"'.implode('","',$keys).'"',
+            'vals'=>'"'.implode('","',$vals).'"'
+        );
+    }
 }

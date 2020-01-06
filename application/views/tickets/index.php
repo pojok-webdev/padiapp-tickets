@@ -7,18 +7,8 @@
 		<!-- Main content starts here-->
 		<div class="content">
 		<?php $this->load->view('tickets/navbar');?>
-
 			<div id="main-content">
-				<div class="row">
-					<div class="col-mod-12">
-						<ul class="breadcrumb">
-							<li><a href="<?php echo $nav[0]['url'];?>"><?php echo $nav[0]['val'];?></a></li>
-							<li><a href="<?php echo $nav[1]['url'];?>"><?php echo $nav[1]['val'];?></a></li>
-							<li class="active"><?php echo $nav[2]['val'];?></li>
-						</ul>
-					</div>
-				</div>
-
+				<?php $this->load->view('/tickets/breadcrumbrows');?>
 				<!-- Most visited and Traffic sources Graph -->
 				<div class="row">
 					<div class="col-md-12">
@@ -27,7 +17,7 @@
 								<h3 class="panel-title"><?php echo $tabletitle;?>
 									<span class="pull-right">
 										<?php echo $tablesubtitle;?>
-										<button  class="panel-settings"><i class="icon-plus"></i></button>
+										<button  class="panel-settings" id="btnTicketAdd"><i class="icon-plus"></i></button>
 									</span>
 								</h3>
 							</div>
@@ -95,6 +85,9 @@
 			setInterval(function(){
 				$(".age").showDate({startTime:'2019-12-31 22:30:00'});				
 			}, 1000);
+			$("#btnTicketAdd").click(function(){
+				window.location.href = "/tickets/add"
+			});
 		}(jQuery))
 	</script>
 </body>

@@ -9,15 +9,7 @@
 		<div class="content">
 		<?php $this->load->view('tickets/navbar');?>
 			<div id="main-content">
-			<div class="row">
-					<div class="col-mod-12">
-						<ul class="breadcrumb">
-							<li><a href="<?php echo $nav[0]['url'];?>"><?php echo $nav[0]['val'];?></a></li>
-							<li><a href="<?php echo $nav[1]['url'];?>"><?php echo $nav[1]['val'];?></a></li>
-							<li class="active"><?php echo $nav[2]['val'];?></li>
-						</ul>
-					</div>
-				</div>
+				<?php $this->load->view('tickets/breadcrumbrows');?>
 				<!-- Form Horizontal -->
 				<div class="row">
 					<div class="col-md-6">
@@ -38,7 +30,7 @@
 									<div class="form-group">
 										<label for="complain" class="col-lg-3 control-label">Complain</label>
 										<div class="col-lg-9">
-											<?php echo form_dropdown('complain',$complaints,1,'class="form-control" id="complain');?>
+											<?php echo form_dropdown('complaint',$complaints,0,'class="form-control" id="complaint');?>
 										</div>
 									</div>
 								</form>
@@ -66,9 +58,9 @@
 											<input type="text" class="form-control" id="reporterphone" placeholder="Telp. Pelapor">
 										</div>
 									</div>
-									<button type="submit" class="btn btn-primary">Save Chnages</button>
-									<button type="submit" class="btn btn-default">Cancel</button>
 								</form>
+								<button class="btn btn-primary" id="btnSaveTicket">Save Ticket</button>
+								<button class="btn btn-default" id="btnCancelSave">Cancel</button>
 							</div>
 						</div>
 					</div>
@@ -100,16 +92,13 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Save changes</button>
+								<button type="button" class="btn btn-primary">Save ticket</button>
 							</div>
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
-
 			</div><!-- /Main Content  @7 -->
-
 		</div><!-- / Content @5 -->
-
 		<?php $this->load->view('tickets/footer');?>
 	</div> <!-- Frame -->
 	<!-- Load JS here for greater good =============================-->
@@ -133,7 +122,6 @@
 				name: 'ztatez',
 				source: substringMatcher(ztatez)
 			});
-
 		})
 		.fail(function(err){
 			console.log("Err got",err);
@@ -159,6 +147,31 @@
 				cb(matches);
 			};
 		};
+		$("#btnSaveTicket").click(function(){
+			console.log("Save Ticket clicked");
+			$.ajax({
+				url:'/tickets/save',
+				type:'POST',
+				data:{
+					clientname:$('#clientName').val(),
+					complaint:$('#complaint').val(),
+					reporter:$('#reporter').val(),
+					reporterphone:$('#reporterphone').val(),
+					requesttype:'pelanggan'
+				}
+			})
+			.done(function(res){
+				console.log('Result',res);
+				//$("#myModal").modal("show");
+				window.location.href = '/tickets'
+			})
+			.fail(function(err){
+				console.log('Error',err);
+			});
+		});
+		$("#btnCancelSave").click(function(){
+			window.location.href = '/tickets';
+		})
 	</script>
 </body>
 </html>

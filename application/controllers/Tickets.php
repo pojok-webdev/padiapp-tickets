@@ -59,11 +59,15 @@ Class Tickets extends CI_Controller{
     }
     function save(){
         $obj = array(
-            'id'=>1,
+            //'id'=>1,
             'kdticket'=>'12245',
-            'clientname'=>'wakaka'
+            'clientname'=>'wakaka',
+            'reporter'=>'Puji',
+            'reporterphone'=>'08813272107',
+            'requesttype'=>'pelanggan'
         );
-        $this->crud->save($obj);
+        $params = $this->input->post();
+        $this->crud->save('tickets',$params);
     }
     function update(){
         $obj = array(
