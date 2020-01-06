@@ -48,7 +48,7 @@
 													Action <span class="caret"></span>
 												</button>
 												<ul class="dropdown-menu" role="menu">
-													<li><a href="#">Follow Up</a></li>
+													<li><a href="/followups/add/<?php echo $obj->id;?>">Follow Up</a></li>
 													<li><a href="#">Troubleshoot</a></li>
 													<li><a href="#">Ask to delete</a></li>
 													<li class="divider"></li>
