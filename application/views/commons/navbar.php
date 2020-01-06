@@ -1,6 +1,6 @@
 <div class="navbar">
     <a href="/assets/archons/#" onclick="return false;" class="btn pull-left toggle-sidebar "><i class="icon-list"></i></a>
-    <a class="navbar-brand" href="/">Archon</a>
+    <a class="navbar-brand" href="/">PadiApp Tickets</a>
     <!-- Top right user menu -->
     <ul class="nav navbar-nav user-menu pull-right">
         <li class="dropdown user-name">

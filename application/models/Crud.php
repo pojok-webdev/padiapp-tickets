@@ -23,6 +23,7 @@ Class Crud extends CI_Model{
             $cols = '*';
         }
         $sql = 'select '.$cols.' from '.$table.' ';
+        $sql.= 'order by create_date desc ';
         if(!is_null($segment)&&!is_null($offset)){
             $sql.= 'limit '.$offset.','.$segment.' ';
         }
