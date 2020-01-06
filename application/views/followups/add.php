@@ -22,15 +22,39 @@
 							<div class="panel-body">
 								<form class="form-horizontal" role="form">
 									<div class="form-group">
-										<label for="clientName" class="col-lg-3 control-label">Name</label>
+										<label for="clientName" class="col-lg-3 control-label">Keluhan</label>
 										<div class="col-lg-9">
 											<input type="text" class="form-control" id="clientName" placeholder="Client Name">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="complain" class="col-lg-3 control-label">Complain</label>
+										<label for="clientName" class="col-lg-3 control-label">Pelapor</label>
 										<div class="col-lg-9">
-											<?php echo form_dropdown('complaint',$complaints,0,'class="form-control" id="complaint');?>
+											<input type="text" class="form-control" id="clientName" placeholder="Client Name">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="clientName" class="col-lg-3 control-label">Tanggal</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="clientName" placeholder="Client Name">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="clientName" class="col-lg-3 control-label">Action</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="clientName" placeholder="Client Name">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="clientName" class="col-lg-3 control-label">Start Downtime</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="clientName" placeholder="Client Name">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="clientName" class="col-lg-3 control-label">End Downtime</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="clientName" placeholder="Client Name">
 										</div>
 									</div>
 								</form>
@@ -47,19 +71,43 @@
 							<div class="panel-body">
 								<form class="form-horizontal" role="form">
 								<div class="form-group">
-										<label for="reporter" class="col-lg-3 control-label">Pelapor</label>
+										<label for="reporter" class="col-lg-3 control-label">Main Root Cause</label>
 										<div class="col-lg-9">
-											<input type="text" class="form-control" id="reporter" placeholder="Pelapor">
+										<?php echo form_dropdown('complaint',$complaints,0,'class="form-control" id="complaint');?>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="reporter" class="col-lg-3 control-label">Telp</label>
+										<label for="reporter" class="col-lg-3 control-label">Sub Root Cause</label>
+										<div class="col-lg-9">
+										<?php echo form_dropdown('complaint',$complaints,0,'class="form-control" id="complaint');?>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="reporter" class="col-lg-3 control-label">Penyebab Lainnya</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="reporterphone" placeholder="Telp. Pelapor">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="reporter" class="col-lg-3 control-label">Kesimpulan</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="reporterphone" placeholder="Telp. Pelapor">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="reporter" class="col-lg-3 control-label">PIC</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="reporterphone" placeholder="Telp. Pelapor">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="reporter" class="col-lg-3 control-label">Hasil Konfirmasi</label>
 										<div class="col-lg-9">
 											<input type="text" class="form-control" id="reporterphone" placeholder="Telp. Pelapor">
 										</div>
 									</div>
 								</form>
-								<button class="btn btn-primary" id="btnSaveTicket">Save Ticket</button>
+								<button class="btn btn-primary" id="btnSaveTicket">Save Follow Up</button>
 								<button class="btn btn-default" id="btnCancelSave">Cancel</button>
 							</div>
 						</div>
@@ -92,7 +140,7 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Save ticket</button>
+								<button type="button" class="btn btn-primary">Save Follow Up</button>
 							</div>
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
