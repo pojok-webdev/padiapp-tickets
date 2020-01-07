@@ -73,13 +73,13 @@
 								<div class="form-group">
 										<label for="reporter" class="col-lg-3 control-label">Main Root Cause</label>
 										<div class="col-lg-9">
-										<?php echo form_dropdown('complaint',$complaints,0,'class="form-control" id="complaint');?>
+										<?php echo form_dropdown('rootcauses',$rootcauses,0,'class="form-control" id="rootcauses"');?>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="reporter" class="col-lg-3 control-label">Sub Root Cause</label>
 										<div class="col-lg-9">
-										<?php echo form_dropdown('complaint',$complaints,0,'class="form-control" id="complaint');?>
+										<?php echo form_dropdown('causes',$causes,0,'class="form-control" id="causes"');?>
 										</div>
 									</div>
 									<div class="form-group">
@@ -154,6 +154,7 @@
 	<!-- Page scripts-->
 	<?php $this->load->view('tickets/formscripts');?>
 	<script src="/assets/twitter/typeahead-0.11.1.js"></script>
+	<script src="/assets/padinet/common.js"></script>
 	<script>
 		$.ajax({
 			url:'/tickets/getclients',
@@ -220,6 +221,23 @@
 		$("#btnCancelSave").click(function(){
 			window.location.href = '/tickets';
 		})
+		$("#rootcauses").change(function(){
+			console.log("id",$(this).val());
+			$.ajax({
+				url:'/followups/getcauseby/'+$(this).val(),
+				type:'get',
+				dataType:'json'
+			})
+			.done(function(res){
+				console.log("Res",res);
+				$("#causes").populateComboBox({
+					option:res
+				});
+			})
+			.fail(function(err){
+				console.log("Err",err);
+			});
+		});
 	</script>
 </body>
 </html>

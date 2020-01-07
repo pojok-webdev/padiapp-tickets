@@ -27,10 +27,16 @@ class Followups extends CI_Controller{
         $tickets = $this->crud->gets('tickets',$this->cols,1,10);
         $complaints = $this->ticket->getComplaints();
         $complaintsarray = $this->common->makearray($complaints['res']);
+        $rootcauses = $this->crud->gets('ticketcausecategories','id,name');
+        $rootcausesarray = $this->common->makearray($rootcauses['res']);
+        $causes = $this->crud->gets('ticketcauses','id,name');
+        $causesarray = $this->common->makearray($causes['res']);
         $data = array(
             'objs'=> $tickets,
             'objsjson'=> json_encode($tickets),
             'pagetitle'=>'Padi InterNET Add Ticket Follow Ups',
+            'rootcauses'=>$rootcausesarray,
+            'causes'=>$causesarray,
             'username'=>'Guest',
             'tabletitle'=>'Ticket Follow Ups',
             'tablesubtitle'=>'Add',
@@ -42,5 +48,11 @@ class Followups extends CI_Controller{
             )
         );
         $this->load->view('/followups/add',$data);
+    }
+    function getcauseby(){
+        $id = $this->uri->segment(3);
+        $res = $this->crud->getby('ticketcauses',array('category_id',$id),'id,name');
+        $obj = $res['res'];
+        echo json_encode($obj);
     }
 }
